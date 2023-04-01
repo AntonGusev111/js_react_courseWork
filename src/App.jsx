@@ -1,30 +1,22 @@
-import './App.css'
-import ProjectRouters from './routers/ProjectRouters'
-import Menu from './components/header/Menu'
-import Banner from './components/header/Banner'
-import Footer from './components/footer/Footer'
-
+import "./App.css";
+import { ProjectRouter } from "./components/router/ProjectRouter";
+import { Menu } from "./components/pages/header/Menu";
+import { Banner } from "./components/pages/header/Banner";
+import { Footer } from "./components/pages/footer/Footer";
 
 function App() {
-
   return (
-  <>
-  <body>
-    <Menu />
-    <div className='row'>
-      <div className='col'>
-        <Banner />
-        <ProjectRouters />
-      </div>
-    </div>
-    
-    <Footer />
-    </body>
-  </>
-    
-  )
+      <body>
+        <Menu />
+        <div className="row">
+          <div className="col">
+            <Banner />
+            <ProjectRouter />
+          </div>
+        </div>
+        <Footer />
+      </body>
+  );
 }
 
-export default App
-
-
+export default App;
