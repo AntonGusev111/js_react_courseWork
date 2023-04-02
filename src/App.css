@@ -351,6 +351,10 @@ h2, .h2 {
   display: flex;
 }
 
+.row-single{
+  display: flex;
+}
+
 .row-catalog{
   max-width: 1200px;
   display: flex;

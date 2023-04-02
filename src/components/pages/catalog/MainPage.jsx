@@ -20,9 +20,9 @@ function MainPage() {
 
   return (
     <>
-      <section className="top-sales">
+
         <Hits goods={goods} />
-      </section>
+
       <section className="catalog">
         <h2 className="text-center">Каталог</h2>
         <ul className="catalog-categories nav justify-content-center">

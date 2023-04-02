@@ -38,7 +38,7 @@ function SinglePage() {
   return (
     <section className="catalog-item">
       <h2 className="text-center">{singleGoods.title}</h2>
-      <div className="row">
+      <div className="row-single">
         <div className="col-5">
           <img
             src={singleGoods.images[0]}
