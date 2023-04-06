@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import headerLogo from "../../../assets/header-logo.png";
-import { MenuSearchIcon } from "../../search/MenuSearchIcon";
-import { BasketIcon } from "../basket/BasketIcon";
+import { MenuSearchIcon } from "../search/MenuSearchIcon";
+import { BasketIcon } from "../../pages/basket/BasketIcon";
 
 function Menu() {
   return (

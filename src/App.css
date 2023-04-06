@@ -356,8 +356,9 @@ h2, .h2 {
 }
 
 .row-catalog{
-  max-width: 1200px;
+  max-width: 1500px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .col{
@@ -426,6 +427,7 @@ h2, .h2 {
 .col-4{
   border: 1px solid rgb(231, 213, 213);
   margin-left: 4%;
+  margin-bottom: 10px;
   border-radius: 5px;
 }
 
@@ -473,7 +475,8 @@ td, th{
 }
 
 .singleImg{
-  width: 750px;
+  width: 550px;
+  height: 500px;
 }
 
 .col-7{
@@ -498,6 +501,17 @@ td, th{
 }
 
 .btn-outline-primary{
+  display: table-cell;
+  width: 25px;
   margin-top: 30px;
   margin-left: 45%;
+}
+
+.CatalogSearch{
+  width: 100%;
+  border-color: gray;
+}
+
+.btnload{
+  width: 80px;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Categories({ element, select }) {
+function CategoriesList({ element, select }) {
   return (
     <a
       id={element.id}
@@ -15,4 +15,4 @@ function Categories({ element, select }) {
   );
 }
 
-export { Categories };
+export { CategoriesList };

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import searchMenuIcon from "../../assets/searchIcon.png";
+import searchMenuIcon from "../../../assets/searchIcon.png";
 //import {Redirect} from "react-router-dom";  //Uncaught SyntaxError: The requested module '/node_modules/.vite/deps/react-router-dom.js?v=dda6d809' does not provide an export named 'Redirect'
 
 function MenuSearchIcon() {

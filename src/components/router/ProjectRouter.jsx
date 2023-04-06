@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { MainPage } from "../pages/catalog/MainPage";
+import { MainPage } from "../pages/mainpage/MainPage";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 import { About } from "../pages/about/About";
 import { Contacts } from "../pages/contacts/Contacts";
-import { Catalog } from "../pages/catalog/Catalog";
+import { CatalogPage } from "../pages/catalog/CatalogPage";
 import { Cart } from "../pages/cart/Cart";
 import { SinglePage } from "../pages/singlepage/SinglePage";
 
@@ -13,7 +13,7 @@ function ProjectRouter() {
     <Routes>
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/" element={<MainPage />} />
-      <Route path="/catalog" element={<Catalog />} />
+      <Route path="/catalog" element={<CatalogPage />} />
       <Route path="/about" element={<About />} />
       <Route path="/contacts" element={<Contacts />} />
       <Route path="/cart" element={<Cart />} />

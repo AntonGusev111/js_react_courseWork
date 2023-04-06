@@ -1,7 +1,7 @@
 import {
-  GET_HITS_FAILURE,
-  GET_HITS_REQUEST,
-  GET_HITS_SUCCESS,
+  GET_CATEGORIES_REQUEST,
+  GET_CATEGORIES_FAILURE,
+  GET_CATEGORIES_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -10,22 +10,22 @@ const initialState = {
   error: null,
 };
 
-function hitsReducer(state = initialState, action) {
+function CategoriesReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_HITS_REQUEST:
+    case GET_CATEGORIES_REQUEST:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case GET_HITS_FAILURE:
+    case GET_CATEGORIES_FAILURE:
       const { error } = action.payload;
       return {
         ...state,
         loading: false,
         error,
       };
-    case GET_HITS_SUCCESS:
+    case GET_CATEGORIES_SUCCESS:
       const { items } = action.payload;
       return {
         ...state,
@@ -38,4 +38,4 @@ function hitsReducer(state = initialState, action) {
   }
 }
 
-export { hitsReducer };
+export { CategoriesReducer };

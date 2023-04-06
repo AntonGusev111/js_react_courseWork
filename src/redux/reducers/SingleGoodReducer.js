@@ -1,7 +1,7 @@
 import {
-  GET_HITS_FAILURE,
-  GET_HITS_REQUEST,
-  GET_HITS_SUCCESS,
+  GET_GOOD_REQUEST,
+  GET_GOOD_FAILURE,
+  GET_GOOD_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -10,23 +10,24 @@ const initialState = {
   error: null,
 };
 
-function hitsReducer(state = initialState, action) {
+function SingleGoodReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_HITS_REQUEST:
+    case GET_GOOD_REQUEST:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case GET_HITS_FAILURE:
+    case GET_GOOD_FAILURE:
       const { error } = action.payload;
       return {
         ...state,
         loading: false,
         error,
       };
-    case GET_HITS_SUCCESS:
+    case GET_GOOD_SUCCESS:
       const { items } = action.payload;
+
       return {
         ...state,
         items,
@@ -38,4 +39,4 @@ function hitsReducer(state = initialState, action) {
   }
 }
 
-export { hitsReducer };
+export { SingleGoodReducer };
