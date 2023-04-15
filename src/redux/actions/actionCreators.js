@@ -13,6 +13,13 @@ import {
   GET_GOOD_REQUEST,
   GET_GOOD_FAILURE,
   GET_GOOD_SUCCESS,
+  CHANGE_CART_STATE,
+  CHANGE_CART_SUCCESS,
+  CHANGE_CATEGORY_ID,
+  CHANGE_CATEGORY_SUCCESS,
+  POST_ORDER_REQUEST,
+  POST_ORDER_FAILURE,
+  POST_ORDER_SUCCESS,
 } from "./actionTypes";
 
 const getHitsRequest = (hits) => ({
@@ -84,6 +91,44 @@ const getGoodSuccess = (items) => ({
   type: GET_GOOD_SUCCESS,
   payload: { items },
 });
+//-------------------------------------------//
+const changeCartState = (CountInput) => ({
+  type: CHANGE_CART_STATE,
+  payload: { CountInput },
+});
+
+const changeCountSucces = (countSucces) => ({
+  type: CHANGE_CART_SUCCESS,
+  payload: { countSucces },
+});
+
+//-------------------------------------------//
+
+const changeCategoryId = (categoryId) => ({
+  type: CHANGE_CATEGORY_ID,
+  payload: { categoryId },
+});
+
+const changeCategorySuccess = (category) => ({
+  type: CHANGE_CATEGORY_SUCCESS,
+  payload: { category },
+});
+
+//-------------------------------------------//
+const postOrderRequest = (order) => ({
+  type: POST_ORDER_REQUEST,
+  payload: { order },
+});
+
+const postOrderFailure = (error) => ({
+  type: POST_ORDER_FAILURE,
+  payload: { error },
+});
+
+const postOrderSuccess = (status) => ({
+  type: POST_ORDER_SUCCESS,
+  payload: { status },
+});
 
 export {
   getHitsRequest,
@@ -100,4 +145,11 @@ export {
   getGoodRequest,
   getGoodFailure,
   getGoodSuccess,
+  changeCartState,
+  changeCountSucces,
+  changeCategoryId,
+  changeCategorySuccess,
+  postOrderRequest,
+  postOrderFailure,
+  postOrderSuccess,
 };

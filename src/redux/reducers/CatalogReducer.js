@@ -2,7 +2,7 @@ import {
   GET_CATALOG_REQUEST,
   GET_CATALOG_FAILURE,
   GET_CATALOG_SUCCESS,
-} from "../actions/actionTypes";
+} from "../Actions/actionTypes";
 
 const initialState = {
   items: [],

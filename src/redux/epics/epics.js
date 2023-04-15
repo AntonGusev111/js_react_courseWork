@@ -16,9 +16,10 @@ import {
   GET_CATALOG_REQUEST,
   CHANGE_SEARCH_FIELD,
   GET_GOOD_REQUEST,
-  GET_GOOD_FAILURE,
-  GET_GOOD_SUCCESS,
-} from "../actions/actionTypes";
+  CHANGE_CART_STATE,
+  CHANGE_CATEGORY_ID,
+  POST_ORDER_REQUEST,
+} from "../Actions/actionTypes";
 import {
   getHitsFailure,
   getHitssSuccess,
@@ -29,7 +30,14 @@ import {
   changeSearchSuccess,
   getGoodFailure,
   getGoodSuccess,
-} from "../actions/actionCreators";
+  changeCartState,
+  changeCountSucces,
+  changeCategoryId,
+  changeCategorySuccess,
+  postOrderRequest,
+  postOrderFailure,
+  postOrderSuccess,
+} from "../Actions/actionCreators";
 
 const getHitsEpic = (action$) =>
   action$.pipe(
@@ -48,7 +56,6 @@ const getCategoriesEpic = (action$) =>
     ofType(GET_CATEGORIES_REQUEST),
     switchMap((o) =>
       ajax.getJSON("http://localhost:7070/api/categories").pipe(
-        retry(4),
         map((o) => getCategoriesSuccess(o)),
         catchError((e) => of(getCategoriesFailure(e)))
       )
@@ -64,11 +71,24 @@ const changeSearchEpic = (action$) =>
     map((o) => changeSearchSuccess(o))
   );
 
+const changeCategoryEpic = (action$) =>
+  action$.pipe(
+    ofType(CHANGE_CATEGORY_ID),
+    map((o) => o.payload),
+    map((o) => changeCategorySuccess(o))
+  );
+
+const changeCartStateEpic = (action$) =>
+  action$.pipe(
+    ofType(CHANGE_CART_STATE),
+    map((o) => o.payload.CountInput),
+    map((o) => changeCountSucces(o))
+  );
+
 const getCatalogEpic = (action$) =>
   action$.pipe(
     ofType(GET_CATALOG_REQUEST),
     map((o) => o.payload.catalog),
-    //tap((o) => console.log(o)),
     map(
       (o) =>
         new URLSearchParams({
@@ -86,6 +106,31 @@ const getCatalogEpic = (action$) =>
     )
   );
 
+const postOrderEpic = (action$) =>
+  action$.pipe(
+    ofType(POST_ORDER_REQUEST),
+    map((o) => o.payload.order),
+    tap((o) => {
+      console.log(o);
+    }),
+    switchMap((o) =>
+      ajax({
+        url: "http://localhost:7070/api/order",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: {
+          owner: o.owner,
+          items: o.items,
+        },
+      }).pipe(
+        map((o) => postOrderSuccess(o.status)),
+        catchError((e) => of(postOrderFailure(e)))
+      )
+    )
+  );
+
 const getGoodEpic = (action$) =>
   action$.pipe(
     ofType(GET_GOOD_REQUEST),
@@ -94,7 +139,7 @@ const getGoodEpic = (action$) =>
       ajax.getJSON(`http://localhost:7070/api/items/${o}`).pipe(
         retry(3),
         map((o) => getGoodSuccess(o)),
-        catchError((e) => of(getGoodFailure(e)))
+        catchError((e) => of(postOrderFailure(e)))
       )
     )
   );
@@ -105,4 +150,7 @@ export {
   getCatalogEpic,
   changeSearchEpic,
   getGoodEpic,
+  changeCartStateEpic,
+  changeCategoryEpic,
+  postOrderEpic,
 };

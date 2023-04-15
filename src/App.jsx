@@ -1,8 +1,8 @@
 import "./App.css";
-import { ProjectRouter } from "./components/router/ProjectRouter";
-import {Menu} from './components/componentselements/header/Menu'
-import { Banner } from "./components/componentselements/header/Banner";
-import { Footer } from "./components/componentselements/footer/Footer";
+import { ProjectRouter } from "./router/ProjectRouter";
+import {Menu} from "./components/Header/Menu";
+import { Banner } from "./components/Header/Banner";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (

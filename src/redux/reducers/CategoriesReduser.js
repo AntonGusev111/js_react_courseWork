@@ -2,7 +2,7 @@ import {
   GET_CATEGORIES_REQUEST,
   GET_CATEGORIES_FAILURE,
   GET_CATEGORIES_SUCCESS,
-} from "../actions/actionTypes";
+} from "../Actions/actionTypes";
 
 const initialState = {
   items: [],
@@ -27,9 +27,10 @@ function CategoriesReducer(state = initialState, action) {
       };
     case GET_CATEGORIES_SUCCESS:
       const { items } = action.payload;
+      items.splice(0, 0, { id: " ", title: "Все" });
       return {
         ...state,
-        items,
+        items: items,
         loading: false,
         error: null,
       };

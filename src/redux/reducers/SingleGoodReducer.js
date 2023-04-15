@@ -2,7 +2,7 @@ import {
   GET_GOOD_REQUEST,
   GET_GOOD_FAILURE,
   GET_GOOD_SUCCESS,
-} from "../actions/actionTypes";
+} from "../Actions/actionTypes";
 
 const initialState = {
   items: [],
@@ -27,7 +27,6 @@ function SingleGoodReducer(state = initialState, action) {
       };
     case GET_GOOD_SUCCESS:
       const { items } = action.payload;
-
       return {
         ...state,
         items,

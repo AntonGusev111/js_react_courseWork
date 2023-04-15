@@ -1,41 +1,44 @@
 import {
-  GET_HITS_FAILURE,
-  GET_HITS_REQUEST,
-  GET_HITS_SUCCESS,
+  POST_ORDER_REQUEST,
+  POST_ORDER_FAILURE,
+  POST_ORDER_SUCCESS,
 } from "../Actions/actionTypes";
 
 const initialState = {
-  items: [],
+  order: null,
   loading: false,
   error: null,
+  status: null,
 };
 
-function hitsReducer(state = initialState, action) {
+function OrderReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_HITS_REQUEST:
+    case POST_ORDER_REQUEST:
+      const { order } = action.payload;
       return {
         ...state,
+        order: order,
         loading: true,
         error: null,
       };
-    case GET_HITS_FAILURE:
+    case POST_ORDER_FAILURE:
       const { error } = action.payload;
       return {
         ...state,
         loading: false,
         error,
       };
-    case GET_HITS_SUCCESS:
-      const { items } = action.payload;
+    case POST_ORDER_SUCCESS:
+      const { status } = action.payload;
       return {
         ...state,
-        items,
         loading: false,
         error: null,
+        status: status,
       };
     default:
       return state;
   }
 }
 
-export { hitsReducer };
+export { OrderReducer };

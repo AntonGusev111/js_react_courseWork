@@ -1,7 +1,7 @@
 import {
   CHANGE_SEARCH_FIELD,
   CHANGE_SEARCH_SUCCESS,
-} from "../actions/actionTypes";
+} from "../Actions/actionTypes";
 
 const initialState = {
   searchInput: "",
