@@ -17,10 +17,13 @@ function SearchReducer(state = initialState, action) {
         searchInput,
       };
     case CHANGE_SEARCH_SUCCESS:
-      const { searchValue } = action.payload;
+      let { searchValue } = action.payload;
+      if(state.searchInput.length == 0){
+        searchValue=''
+      }
       return {
         ...state,
-        searchValue,
+        searchValue: searchValue,
       };
     default:
       return state;

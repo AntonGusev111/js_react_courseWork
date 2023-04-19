@@ -6,7 +6,7 @@ import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
-      <body>
+      <>
         <Menu />
         <div className="row">
           <div className="col">
@@ -15,7 +15,7 @@ function App() {
           </div>
         </div>
         <Footer />
-      </body>
+      </>
   );
 }
 

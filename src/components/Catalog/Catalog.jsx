@@ -89,7 +89,7 @@ function Catalog({ search }) {
       <ul className="catalog-categories nav justify-content-center">
         <Categories onChange={hadleApplyCategory} />
       </ul>
-      <CatalogList goods={goods} />
+      <CatalogList goods={goods} load={loading}/>
 
       <LoadButton onChange={handleOffset} visible={buttonState} />
       {items && loading && (

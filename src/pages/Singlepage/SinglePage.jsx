@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getGoodRequest } from "../../redux/Actions/actionCreators";
 import { useState, useEffect } from "react";
@@ -10,7 +10,7 @@ import { SingleGoodLoader } from "../../components/Loaders/SingleGoodLoader";
 
 function SinglePage() {
   const { items, loading, error } = useSelector((state) => state.singleGood);
-  const [singleGoods, setSingleGoods] = useState("");
+  // const [singleGoods, setSingleGoods] = useState("");
   const param = useParams();
   const dispatch = useDispatch();
 
@@ -24,9 +24,9 @@ function SinglePage() {
     dispatch(getGoodRequest(param.id));
   }, []);
 
-  useEffect(() => {
-    setSingleGoods(items);
-  }, [items]);
+  // useEffect(() => {
+  //   setSingleGoods(items);
+  // }, [items]);
 
   return (
     <>

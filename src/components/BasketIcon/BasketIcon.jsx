@@ -21,7 +21,7 @@ function BasketIcon() {
   });
 
   useEffect(() => {
-    setCount(countSuccess);
+    getCount();
   }, [countSuccess]);
 
   return (

@@ -3,11 +3,12 @@ import { useState } from "react";
 import searchMenuIcon from "../../assets/searchIcon.png";
 import { useDispatch } from "react-redux";
 import { changeSearchField } from "../../redux/Actions/actionCreators";
-//import {Redirect} from "react-router-dom";  //Uncaught SyntaxError: The requested module '/node_modules/.vite/deps/react-router-dom.js?v=dda6d809' does not provide an export named 'Redirect'
+import { useNavigate } from 'react-router-dom'
 
 function MenuSearchIcon() {
   const [inputValue, setValue] = useState("");
   const [inputVisible, setVisible] = useState(false);
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   const handleChangeValue = (e) => {
@@ -15,14 +16,13 @@ function MenuSearchIcon() {
   };
 
   const handleChangeSearch = () => {
-    const value = document.querySelector(".searchVal");
-    setVisible(!inputVisible);
-    if (inputVisible) {
-      setValue("");
-    }
+    const value = document.querySelector(".searchVal").value;
     if (value.length > 0) {
       dispatch(changeSearchField(value));
+      navigate("/catalog")
+      setValue("");
     }
+    setVisible(!inputVisible);
   };
 
   return (
@@ -34,7 +34,7 @@ function MenuSearchIcon() {
           inputVisible ? "searchVal searchInputMenu" : "searchVal invisible"
         }
       ></input>
-      <img
+       <img
         onClick={handleChangeSearch}
         className="searchIconMenu"
         src={searchMenuIcon}

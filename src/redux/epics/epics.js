@@ -19,6 +19,7 @@ import {
   CHANGE_CART_STATE,
   CHANGE_CATEGORY_ID,
   POST_ORDER_REQUEST,
+  POST_ORDER_SUCCESS,
 } from "../Actions/actionTypes";
 import {
   getHitsFailure,
@@ -65,7 +66,7 @@ const getCategoriesEpic = (action$) =>
 const changeSearchEpic = (action$) =>
   action$.pipe(
     ofType(CHANGE_SEARCH_FIELD),
-    map((o) => o.payload.searchInput.trim("")),
+    map((o) => o.payload.searchInput.trim("")), //.trim("")
     filter((o) => o !== ""),
     debounceTime(2000),
     map((o) => changeSearchSuccess(o))
@@ -129,6 +130,15 @@ const postOrderEpic = (action$) =>
         catchError((e) => of(postOrderFailure(e)))
       )
     )
+  );
+
+const postOrderStatus = (action$) =>
+  action$.pipe(
+    ofType(POST_ORDER_SUCCESS),
+    map((o) => o.payload),
+    tap((o) => {
+      console.log("epic", o);
+    })
   );
 
 const getGoodEpic = (action$) =>

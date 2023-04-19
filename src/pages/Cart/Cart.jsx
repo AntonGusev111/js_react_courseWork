@@ -4,7 +4,10 @@ import { CartHead } from "./CartHead";
 import { CartBody } from "./CartBody";
 import { Cartfooter } from "./Cartfooter";
 import { CartForm } from "./CartForm";
-import { changeCartState } from "../../redux/Actions/actionCreators";
+import {
+  changeCartState,
+  postOrderSuccess,
+} from "../../redux/Actions/actionCreators";
 import { useSelector, useDispatch } from "react-redux";
 import {
   postOrderRequest,
@@ -69,10 +72,13 @@ function Cart() {
   useEffect(() => {
     if (status == 204) {
       dispatch(changeCartState(JSON.parse(localStorage.getItem("cart"))));
-      localStorage.removeItem("cart");
+      //localStorage.removeItem("cart");
       setList([]);
+      localStorage.setItem("cart", JSON.stringify([]));
+      dispatch(changeCartState([]));
       setSucces(true);
       setTimeout(() => {
+        dispatch(postOrderSuccess(null));
         setSucces(false);
       }, 2000);
     }
