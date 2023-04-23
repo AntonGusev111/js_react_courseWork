@@ -20,6 +20,7 @@ import {
   POST_ORDER_REQUEST,
   POST_ORDER_FAILURE,
   POST_ORDER_SUCCESS,
+  CHANGE_SEARCHICON_VALUE,
 } from "./actionTypes";
 
 const getHitsRequest = (hits) => ({
@@ -76,7 +77,14 @@ const changeSearchSuccess = (searchValue) => ({
   type: CHANGE_SEARCH_SUCCESS,
   payload: { searchValue },
 });
+
 //-------------------------------------------//
+const changeSearchIconValue = (searchIconValue) => ({
+  type: CHANGE_SEARCHICON_VALUE,
+  payload: { searchIconValue },
+});
+//-------------------------------------------//
+
 const getGoodRequest = (id) => ({
   type: GET_GOOD_REQUEST,
   payload: { id },
@@ -152,4 +160,5 @@ export {
   postOrderRequest,
   postOrderFailure,
   postOrderSuccess,
+  changeSearchIconValue,
 };

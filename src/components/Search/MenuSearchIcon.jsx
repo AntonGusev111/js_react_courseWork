@@ -2,13 +2,13 @@ import React from "react";
 import { useState } from "react";
 import searchMenuIcon from "../../assets/searchIcon.png";
 import { useDispatch } from "react-redux";
-import { changeSearchField } from "../../redux/Actions/actionCreators";
-import { useNavigate } from 'react-router-dom'
+import { changeSearchIconValue } from "../../redux/Actions/actionCreators";
+import { useNavigate } from "react-router-dom";
 
 function MenuSearchIcon() {
   const [inputValue, setValue] = useState("");
   const [inputVisible, setVisible] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleChangeValue = (e) => {
@@ -18,8 +18,8 @@ function MenuSearchIcon() {
   const handleChangeSearch = () => {
     const value = document.querySelector(".searchVal").value;
     if (value.length > 0) {
-      dispatch(changeSearchField(value));
-      navigate("/catalog")
+      dispatch(changeSearchIconValue(value));
+      navigate("/catalog");
       setValue("");
     }
     setVisible(!inputVisible);
@@ -34,7 +34,7 @@ function MenuSearchIcon() {
           inputVisible ? "searchVal searchInputMenu" : "searchVal invisible"
         }
       ></input>
-       <img
+      <img
         onClick={handleChangeSearch}
         className="searchIconMenu"
         src={searchMenuIcon}

@@ -72,7 +72,6 @@ function Cart() {
   useEffect(() => {
     if (status == 204) {
       dispatch(changeCartState(JSON.parse(localStorage.getItem("cart"))));
-      //localStorage.removeItem("cart");
       setList([]);
       localStorage.setItem("cart", JSON.stringify([]));
       dispatch(changeCartState([]));

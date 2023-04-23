@@ -8,6 +8,7 @@ import { SingleGoodReducer } from "../Reducers/SingleGoodReducer";
 import { CartReducer } from "../Reducers/CartReducer";
 import { CategoryReducer } from "../Reducers/CategoryReducer";
 import { OrderReducer } from "../Reducers/OrderReducer";
+import { SearchIconReducer } from "../Reducers/SearchIconReducer";
 import {
   getHitsEpic,
   getCategoriesEpic,
@@ -17,6 +18,7 @@ import {
   changeCartStateEpic,
   changeCategoryEpic,
   postOrderEpic,
+  changeSearchIconEpic,
 } from "../Epics/epics";
 
 const reducer = combineReducers({
@@ -28,6 +30,7 @@ const reducer = combineReducers({
   cartState: CartReducer,
   categoryId: CategoryReducer,
   order: OrderReducer,
+  searchIconValue: SearchIconReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -40,7 +43,8 @@ const epic = combineEpics(
   getGoodEpic,
   changeCartStateEpic,
   changeCategoryEpic,
-  postOrderEpic
+  postOrderEpic,
+  changeSearchIconEpic
 );
 
 const epicMiddleware = createEpicMiddleware();

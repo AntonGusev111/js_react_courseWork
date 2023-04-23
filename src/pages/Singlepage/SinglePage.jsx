@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getGoodRequest } from "../../redux/Actions/actionCreators";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { OrderParametr } from "./OrderParametr";
 import { PTable } from "./PTable";
 import { GoodPhoto } from "./GoodPhoto";
@@ -10,7 +10,6 @@ import { SingleGoodLoader } from "../../components/Loaders/SingleGoodLoader";
 
 function SinglePage() {
   const { items, loading, error } = useSelector((state) => state.singleGood);
-  // const [singleGoods, setSingleGoods] = useState("");
   const param = useParams();
   const dispatch = useDispatch();
 
@@ -23,10 +22,6 @@ function SinglePage() {
   useEffect(() => {
     dispatch(getGoodRequest(param.id));
   }, []);
-
-  // useEffect(() => {
-  //   setSingleGoods(items);
-  // }, [items]);
 
   return (
     <>

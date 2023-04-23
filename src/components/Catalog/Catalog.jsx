@@ -4,8 +4,11 @@ import { CatalogList } from "./CatalogList";
 import { useSelector, useDispatch } from "react-redux";
 import { Categories } from "./Categories/Categories";
 import { LoadButton } from "./LoadButton";
-import { getCatalogRequest } from "../../redux/Actions/actionCreators";
-import { changeCategoryId } from "../../redux/Actions/actionCreators";
+import {
+  getCatalogRequest,
+  changeSearchField,
+  changeCategoryId,
+} from "../../redux/Actions/actionCreators";
 import { SearchString } from "../Search/SearchString";
 import { CatalogLoader } from "../Loaders/CatalogLoader";
 
@@ -26,6 +29,12 @@ function Catalog({ search }) {
         q: searchValue,
       })
     );
+
+  useEffect(() => {
+    if (!search) {
+      dispatch(changeSearchField(""));
+    }
+  }, [search]);
 
   useEffect(() => {
     if (error != null) {
@@ -74,6 +83,9 @@ function Catalog({ search }) {
   useEffect(() => {
     setgoods([]);
     getData();
+    return () => {
+      dispatch(changeCategoryId(""));
+    };
   }, []);
 
   const handleOffset = () => {
@@ -89,7 +101,7 @@ function Catalog({ search }) {
       <ul className="catalog-categories nav justify-content-center">
         <Categories onChange={hadleApplyCategory} />
       </ul>
-      <CatalogList goods={goods} load={loading}/>
+      <CatalogList goods={goods} load={loading} />
 
       <LoadButton onChange={handleOffset} visible={buttonState} />
       {items && loading && (

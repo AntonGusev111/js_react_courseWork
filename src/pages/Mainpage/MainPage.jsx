@@ -1,6 +1,6 @@
 import React from "react";
-import { Hits } from "../../components/Hits/Hits"; //../../componentselements/hits/Hits
-import { Catalog } from "../../components/Catalog/Catalog"; //../../componentselements/catalogcomponent/Catalog
+import { Hits } from "../../components/Hits/Hits";
+import { Catalog } from "../../components/Catalog/Catalog";
 
 function MainPage() {
   return (

@@ -18,8 +18,8 @@ function SearchReducer(state = initialState, action) {
       };
     case CHANGE_SEARCH_SUCCESS:
       let { searchValue } = action.payload;
-      if(state.searchInput.length == 0){
-        searchValue=''
+      if (state.searchInput.length == 0) {
+        searchValue = "";
       }
       return {
         ...state,

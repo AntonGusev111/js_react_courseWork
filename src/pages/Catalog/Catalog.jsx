@@ -3,9 +3,9 @@ import { Catalog } from "../../components/Catalog/Catalog";
 
 function CatalogPage() {
   return (
-    <div>
+    <>
       <Catalog search={true} />
-    </div>
+    </>
   );
 }
 

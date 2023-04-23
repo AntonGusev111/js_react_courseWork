@@ -20,6 +20,7 @@ import {
   CHANGE_CATEGORY_ID,
   POST_ORDER_REQUEST,
   POST_ORDER_SUCCESS,
+  CHANGE_SEARCHICON_VALUE,
 } from "../Actions/actionTypes";
 import {
   getHitsFailure,
@@ -38,6 +39,7 @@ import {
   postOrderRequest,
   postOrderFailure,
   postOrderSuccess,
+  changeSearchIconValue,
 } from "../Actions/actionCreators";
 
 const getHitsEpic = (action$) =>
@@ -66,9 +68,17 @@ const getCategoriesEpic = (action$) =>
 const changeSearchEpic = (action$) =>
   action$.pipe(
     ofType(CHANGE_SEARCH_FIELD),
-    map((o) => o.payload.searchInput.trim("")), //.trim("")
+    map((o) => o.payload.searchInput.trim("")),
     filter((o) => o !== ""),
     debounceTime(2000),
+    map((o) => changeSearchSuccess(o))
+  );
+
+const changeSearchIconEpic = (action$) =>
+  action$.pipe(
+    ofType(CHANGE_SEARCHICON_VALUE),
+    map((o) => o.payload.searchIconValue.trim("")),
+    filter((o) => o !== ""),
     map((o) => changeSearchSuccess(o))
   );
 
@@ -163,4 +173,6 @@ export {
   changeCartStateEpic,
   changeCategoryEpic,
   postOrderEpic,
+  postOrderStatus,
+  changeSearchIconEpic,
 };
